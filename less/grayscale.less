@@ -50,8 +50,24 @@ a {
     }
 }
 
-.light {
+.light, 
+.zach {
     font-weight: 400;
+}
+
+.zach {
+    color: @colorPrimary2;
+    text-transform: none;
+    font-family: Oswald,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.lynde {
+    color: @colorPrimary1;
+    text-transform: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-size: 1.25em;
+    font-family: "Dancing Script",cursive;
 }
 
 .navbar-custom {
@@ -98,9 +114,10 @@ a {
             &.active {
                 outline: none;
                 a {
-                    background-color: fade(@colorFont, 30%);
+                    background-color: lighten(@colorPrimary1,20%);
+                    color: @colorFont;
                     &:hover {
-                        color: @colorFont;
+                        color: @colorPrimary2;
                     }
                 }
             }
@@ -122,13 +139,13 @@ a {
     }
 }
 
-.intro {
+header {
     display: table;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 100px 0;
     text-align: center;
-    color: white;
+    color: @colorFont;
     /* background: url(../img/intro-bg.jpg) no-repeat bottom center scroll; */
     background-color: @colorBG;
     -webkit-background-size: cover;
@@ -139,14 +156,13 @@ a {
         display: table-cell;
         vertical-align: middle;
         .brand-heading {
-            font-size: 40px;
+            font-size: 60px;
         }
         .intro-text {
             font-size: 18px;
         }
     }
     @media(min-width:768px) {
-        height: 100%;
         padding: 0;
         .intro-body {
             .brand-heading {
@@ -156,6 +172,12 @@ a {
                 font-size: 26px;
             }
         }
+    }
+}
+.intro-body {
+    padding-top: 90px;
+    @media(min-width:768px) {
+        padding-top: 50px;
     }
 }
 
@@ -175,8 +197,9 @@ a {
     &:hover,
     &:focus {
         outline: none;
-        color: @colorFont;
-        background: fade(@colorFont, 10%);
+        border-color: @colorPrimary1;
+        color: @colorPrimary1;
+        background: fade(@colorPrimary1, 10%);
     }
     i.animated {
         -webkit-transition-property: -webkit-transform;
@@ -236,7 +259,7 @@ a {
     padding-top: 100px;
 }
 
-.download-section {
+.photo-section {
     width: 100%;
     padding: 50px 0;
     color: @colorFont;
@@ -287,7 +310,7 @@ a {
     &:focus {
         border: 1px solid @colorPrimary1;
         outline: none;
-        color: black;
+        color: @colorBG;
         background-color: @colorPrimary1;
     }
 }

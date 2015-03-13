@@ -34,7 +34,7 @@ p {
   }
 }
 a {
-  color: #222222;
+  color: #dd535a;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -42,17 +42,31 @@ a {
 a:hover,
 a:focus {
   text-decoration: none;
-  color: #000000;
+  color: #a92128;
 }
-.light {
+.light,
+.zach {
   font-weight: 400;
+}
+.zach {
+  color: #777777;
+  text-transform: none;
+  font-family: Oswald, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.lynde {
+  color: #dd535a;
+  text-transform: none;
+  font-weight: 700;
+  line-height: 1em;
+  font-size: 1.25em;
+  font-family: "Dancing Script", cursive;
 }
 .navbar-custom {
   margin-bottom: 0;
   border-bottom: 1px solid rgba(34, 34, 34, 0.3);
   text-transform: uppercase;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #222222;
+  background-color: #dd535a;
 }
 .navbar-custom .navbar-brand {
   font-weight: 700;
@@ -91,10 +105,11 @@ a:focus {
   outline: none;
 }
 .navbar-custom .nav li.active a {
-  background-color: rgba(34, 34, 34, 0.3);
+  background-color: #eea8ac;
+  color: #222222;
 }
 .navbar-custom .nav li.active a:hover {
-  color: #222222;
+  color: #777777;
 }
 @media (min-width: 768px) {
   .navbar-custom {
@@ -108,17 +123,17 @@ a:focus {
   }
   .navbar-custom.top-nav-collapse {
     padding: 0;
-    background: #222222;
+    background: #dd535a;
     border-bottom: 1px solid rgba(34, 34, 34, 0.3);
   }
 }
-.intro {
+header {
   display: table;
   width: 100%;
-  height: auto;
+  height: 100%;
   padding: 100px 0;
   text-align: center;
-  color: white;
+  color: #222222;
   /* background: url(../img/intro-bg.jpg) no-repeat bottom center scroll; */
   background-color: #dddddd;
   -webkit-background-size: cover;
@@ -126,26 +141,33 @@ a:focus {
   background-size: cover;
   -o-background-size: cover;
 }
-.intro .intro-body {
+header .intro-body {
   display: table-cell;
   vertical-align: middle;
 }
-.intro .intro-body .brand-heading {
-  font-size: 40px;
+header .intro-body .brand-heading {
+  font-size: 60px;
 }
-.intro .intro-body .intro-text {
+header .intro-body .intro-text {
   font-size: 18px;
 }
 @media (min-width: 768px) {
-  .intro {
-    height: 100%;
+  header {
     padding: 0;
   }
-  .intro .intro-body .brand-heading {
+  header .intro-body .brand-heading {
     font-size: 100px;
   }
-  .intro .intro-body .intro-text {
+  header .intro-body .intro-text {
     font-size: 26px;
+  }
+}
+.intro-body {
+  padding-top: 90px;
+}
+@media (min-width: 768px) {
+  .intro-body {
+    padding-top: 50px;
   }
 }
 .btn-circle {
@@ -165,8 +187,9 @@ a:focus {
 .btn-circle:hover,
 .btn-circle:focus {
   outline: none;
-  color: #222222;
-  background: rgba(34, 34, 34, 0.1);
+  border-color: #dd535a;
+  color: #dd535a;
+  background: rgba(221, 83, 90, 0.1);
 }
 .btn-circle i.animated {
   -webkit-transition-property: -webkit-transform;
@@ -215,7 +238,7 @@ a:focus {
 .content-section {
   padding-top: 100px;
 }
-.download-section {
+.photo-section {
   width: 100%;
   padding: 50px 0;
   color: #222222;
@@ -253,16 +276,16 @@ a:focus {
   border-radius: 0;
 }
 .btn-default {
-  border: 1px solid #222222;
-  color: #222222;
+  border: 1px solid #dd535a;
+  color: #dd535a;
   background-color: transparent;
 }
 .btn-default:hover,
 .btn-default:focus {
-  border: 1px solid #222222;
+  border: 1px solid #dd535a;
   outline: none;
-  color: black;
-  background-color: #222222;
+  color: #dddddd;
+  background-color: #dd535a;
 }
 ul.banner-social-buttons {
   margin-top: 0;
