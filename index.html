@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading"><span class="zach">Zach</span> &amp;</br><span class="lynde">Lynde</span></h1>
-                        <p class="intro-text">Dating for <span id='datingclock'>1695</span> hours (and counting)</p>
+                        <p class="intro-text"><span id='datingclock'>two thousand five hundred </span>hours</br>(and counting)</p>
                         <!-- <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a> -->
@@ -71,8 +71,11 @@
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
 
+    <!-- Custom JavaScript -->
+    <script src="js/grayscale.js"></script>
+    
     <script>
-        $('#datingclock').html(Math.floor((new Date() - new Date(2014,11,1,21))/3600000));
+        $('#datingclock').html(Math.floor((new Date() - new Date(2014,11,1,21))/3600000).toWords());
     </script>
 
 </body>
