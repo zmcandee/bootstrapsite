@@ -40,10 +40,43 @@
     ga('send', 'pageview');
 
 </script>
-    
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-heart"></i> <span class="light">Zach</span> &amp; <span class="light">Lynde</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from story link when scrolled up past story section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#story">Our Story</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#photos">Photos</a>
+                    </li>
+                    <!-- <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
     <!-- Intro Header -->
     <header>
@@ -52,15 +85,53 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading"><span class="zach">Zach</span> &amp;</br><span class="lynde">Lynde</span></h1>
-                        <p class="intro-text"><span id='datingclock'>two thousand five hundred </span>hours</br>(and counting)</p>
-                        <!-- <a href="#about" class="btn btn-circle page-scroll">
+                        <!--<p class="intro-text"><span id='datingclock'>two thousand five hundred </span>hours</br>(and counting)</p>-->
+                        <a href="#story" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
-                        </a> -->
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- Our Story Section -->
+    <section id="story" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Our Story</h2>
+                <p>Coming soon!</p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section id="photos" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Our Photos</h2>
+                <p>We don't have any official photos yet but checkout our Facebook pages!</p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="//facebook.com/zach.candee" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i>  Zach Candee</a>
+                    </li>
+                    <li>
+                        <a href="//facebook.com/lynde.hobbs" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i>  Lynde Hobbs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p><i id="datingclock">two thousand five hundred </i>hours</p></br>
+            <p>Designed by Zach Candee</p>
+        </div>
+    </footer>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -73,7 +144,7 @@
 
     <!-- Custom JavaScript -->
     <script src="js/grayscale.js"></script>
-    
+
     <script>
         $('#datingclock').html(Math.floor((new Date() - new Date(2014,11,1,21))/3600000).toWords());
     </script>
