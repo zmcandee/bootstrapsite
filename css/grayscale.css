@@ -3,7 +3,7 @@ body {
   height: 100%;
   font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222222;
-  background-color: #dddddd;
+  background-color: #eeeeee;
 }
 html {
   width: 100%;
@@ -49,7 +49,7 @@ a:focus {
   font-weight: 400;
 }
 .zach {
-  color: #777777;
+  color: #888888;
   text-transform: none;
   font-family: Oswald, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -109,7 +109,7 @@ a:focus {
   color: #222222;
 }
 .navbar-custom .nav li.active a:hover {
-  color: #777777;
+  color: #888888;
 }
 @media (min-width: 768px) {
   .navbar-custom {
@@ -135,7 +135,7 @@ header {
   text-align: center;
   color: #222222;
   /* background: url(../img/intro-bg.jpg) no-repeat bottom center scroll; */
-  background-color: #dddddd;
+  background-color: #eeeeee;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -237,13 +237,18 @@ header .intro-body .intro-text {
 }
 .content-section {
   padding-top: 100px;
+  width: 100%;
+  min-height: 100%;
+}
+.content-section:nth-child(odd) {
+  background: #d5d5d5;
 }
 .photo-section {
   width: 100%;
   padding: 50px 0;
   color: #222222;
   /* background: url(../img/downloads-bg.jpg) no-repeat center center scroll; */
-  background-color: #dddddd;
+  background-color: #eeeeee;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -284,7 +289,7 @@ header .intro-body .intro-text {
 .btn-default:focus {
   border: 1px solid #dd535a;
   outline: none;
-  color: #dddddd;
+  color: #eeeeee;
   background-color: #dd535a;
 }
 ul.banner-social-buttons {
