@@ -186,23 +186,6 @@
 
     <!-- Custom JavaScript -->
     <script src="js/grayscale.js"></script>
-                    <script>
-                        $("#songName,#songSong").on('input propertychange',function(){$("#songSubmit").prop("disabled",($('#songName').val()==''||$('#songSong').val()=='')?true:false);});
-                        $("#songForm").submit(function(event){
-                            console.log('song submitted');
-                            $("#songSubmit").prop('disabled',true);
-                            $.post($(this).prop('action'),$(this).serialize(),function(data){
-                                    console.log(data.status);
-                                    if(data.status=="INVALID_REQUEST")
-                                        $("#songResult").text("Unable to process request. Make sure both name and song were entered correctly.");
-                                    else if(data.status=="SONG_ADDED")
-                                        $("#songResult").text("Thanks for your song request ('"+data.song+"')");
-                                },'json').fail(function(){$("#songResult").text("Unable to process your request. Please try again later.");});
-                            $("#songSong").val('');
-                            event.preventDefault();
-                            console.log('prevented default submit');
-                        });
-                    </script>
 
     <script>
         $('#datingclock').html(Math.floor((new Date() - new Date(2014,11,1,21))/3600000).toWords());
