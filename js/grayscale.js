@@ -35,6 +35,19 @@ Number.prototype.toWords = function() {
     return tw(this.toString().split("").reverse().join(""),0);
 }
 
+// Song request form handlers 
+$("#songName,#songSong").on('input propertychange',function(){$("#songSubmit").prop("disabled",($('#songName').val()==''||$('#songSong').val()=='')?true:false);});
+$("#songForm").submit(function(event){
+    $("#songSubmit").prop('disabled',true);
+    $.post($(this).prop('action'),$(this).serialize(),function(data){
+            if(data.status=="INVALID_REQUEST")
+                $("#songResult").text("Unable to process request. Make sure both name and song were entered correctly.");
+            else if(data.status=="SONG_ADDED")
+                $("#songResult").text("Thanks for your song request ('"+data.song+"')");
+        },'json').fail(function(){$("#songResult").text("Unable to process your request. Please try again later.");});
+    $("#songSong").val('');
+    event.preventDefault();
+});
 
 /*
 // Google Maps Scripts

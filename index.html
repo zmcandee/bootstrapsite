@@ -67,6 +67,9 @@
                     <li>
                         <a class="page-scroll" href="#photos">Photos</a>
                     </li>
+                    <li class="hidden">
+                        <a href="#song"></a>
+                    </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
@@ -126,6 +129,30 @@
         </div>
     </section>
 
+    <!-- Song Section -->
+    <section id="song" class="content-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Song Suggestions</h2>
+                    <p>Suggest songs for us to play at our reception so you can bust a move (and not a hip).</p>
+                    <span id="songResult"></span><br>
+                    <form class="form-inline" action="https://script.google.com/macros/s/AKfycbzyPRWenxStwRMOnnIY2L-ovgpRg5FZU0pjXDfQhg21slpBV9SU/exec" method="post" target="_blank" id="songForm">
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Your Name</label>
+                            <input class="form-control" id="songName" type="text" name="name"  placeholder="Your Name" aria-label="Your name? (Add your name so we know who requested it.)" required />
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="song">Song Suggestion</label>
+                            <input class="form-control" id="songSong" type="text" name="song"  placeholder="Song Suggestion" aria-label="Song Request? (Song title, artist, album, etc.)"  />
+                        </div>
+                        <button type="submit" id="songSubmit" class="btn btn-default" disabled>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Contact Section -->
     <section id="contact" class="content-section text-center">
         <div class="container">
@@ -159,6 +186,23 @@
 
     <!-- Custom JavaScript -->
     <script src="js/grayscale.js"></script>
+                    <script>
+                        $("#songName,#songSong").on('input propertychange',function(){$("#songSubmit").prop("disabled",($('#songName').val()==''||$('#songSong').val()=='')?true:false);});
+                        $("#songForm").submit(function(event){
+                            console.log('song submitted');
+                            $("#songSubmit").prop('disabled',true);
+                            $.post($(this).prop('action'),$(this).serialize(),function(data){
+                                    console.log(data.status);
+                                    if(data.status=="INVALID_REQUEST")
+                                        $("#songResult").text("Unable to process request. Make sure both name and song were entered correctly.");
+                                    else if(data.status=="SONG_ADDED")
+                                        $("#songResult").text("Thanks for your song request ('"+data.song+"')");
+                                },'json').fail(function(){$("#songResult").text("Unable to process your request. Please try again later.");});
+                            $("#songSong").val('');
+                            event.preventDefault();
+                            console.log('prevented default submit');
+                        });
+                    </script>
 
     <script>
         $('#datingclock').html(Math.floor((new Date() - new Date(2014,11,1,21))/3600000).toWords());
