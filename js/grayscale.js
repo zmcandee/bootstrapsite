@@ -44,7 +44,7 @@ $("#songForm").submit(function(event){
             if(data.status=="INVALID_REQUEST")
                 $("#songResult").text("Unable to process request. Make sure both name and song were entered correctly.");
             else if(data.status=="SONG_ADDED")
-                $("#songResult").text("Thanks for your song request ('"+data.song+"')");
+                $("#songResult").text("Thanks for your song request ('"+data.row[2]+"')");
         },'json').fail(function(){$("#songResult").text("Unable to process your request. Please try again later.");});
     $("#songSong").val('');
 });
