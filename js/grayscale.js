@@ -41,10 +41,10 @@ $("#songForm").submit(function(event){
     event.preventDefault();
     $("#songSubmit").prop('disabled',true);
     $.post($(this).prop('action'),$(this).serialize(),function(data){
-            if(data.status=="INVALID_REQUEST")
-                $("#songResult").text("Unable to process request. Make sure both name and song were entered correctly.");
-            else if(data.status=="SONG_ADDED")
-                $("#songResult").text("Thanks for your song request ('"+data.row[2]+"')");
+            if(data.status=="SUCCESS")
+                $("#songResult").text("SUCCESS - Thanks for requesting the song: '"+data.row[2]+"'");
+            else
+                $("#songResult").text(data.status+" - "+data.message);
         },'json').fail(function(){$("#songResult").text("Unable to process your request. Please try again later.");});
     $("#songSong").val('');
 });
