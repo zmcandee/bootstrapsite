@@ -41,12 +41,28 @@ $("#songForm").submit(function(event){
     event.preventDefault();
     $("#songSubmit").prop('disabled',true);
     $.post($(this).prop('action'),$(this).serialize(),function(data){
-            if(data.status=="SUCCESS")
-                $("#songResult").text("SUCCESS - Thanks for requesting the song: '"+data.row[2]+"'");
+            var res = $.parseJSON(data);
+            if(res.status=="SUCCESS")
+                $("#songResult").text("SUCCESS - Thanks for requesting the song: '"+res.row[2]+"'").addClass("text-success").removeClass("text-danger");
             else
-                $("#songResult").text(data.status+" - "+data.message);
-        },'json').fail(function(){$("#songResult").text("Unable to process your request. Please try again later.");});
+                $("#songResult").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
+        },'text').fail(function(){$("#songResult").text("Unable to process your request. Please try again later.");});
     $("#songSong").val('');
+});
+
+// RSVP request form handlers 
+$("#searchName").on('input propertychange',function(){$("#searchSubmit").prop("disabled",($('#searchName').val()=='')?true:false);});
+$("#searchForm").submit(function(event){
+    event.preventDefault();
+    $("#searchSubmit").prop('disabled',true);
+    $.post($(this).prop('action'),$(this).serialize(),function(data){
+            var res = $.parseJSON(data);
+            if(res.status=="SUCCESS") {
+                $("#searchStatus").text("SUCCESS - Found "+res.results.length+" matches").addClass("text-success").removeClass("text-danger");
+                console.log(res.results);
+            } else
+                $("#searchStatus").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
+        },'text').fail(function(){$("#searchStatus").text("Unable to process your request. Please try again later.");});
 });
 
 /*

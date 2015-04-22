@@ -61,6 +61,8 @@ a:focus {
   font-size: 1.25em;
   font-family: "Dancing Script", cursive;
 }
+
+#story h2 { text-align: center }
 .navbar-custom {
   margin-bottom: 0;
   border-bottom: 1px solid rgba(34, 34, 34, 0.3);

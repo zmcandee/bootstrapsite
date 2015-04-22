@@ -62,13 +62,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#story">Our Story</a>
+                        <a class="page-scroll" href="#story">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#photos">Photos</a>
                     </li>
-                    <li class="hidden">
-                        <a href="#song"></a>
+                    <li>
+                        <a class="page-scroll" href="#song">Songs</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#rsvp">RSVP</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -98,12 +101,43 @@
     </header>
 
     <!-- Our Story Section -->
-    <section id="story" class="content-section text-center">
+    <section id="story" class="content-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Our Story</h2>
-                    <p>Coming soon!</p>
+                    <img class="img-responsive pull-right" src="img/zachandlynde.jpg" alt="Zach and Lynde">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae sapien nec turpis consectetur 
+                       pretium ac at est. Donec ultrices est a lobortis rhoncus. Nulla sed placerat magna, nec scelerisque est. 
+                       Nulla fermentum lacus et lectus ultricies, vitae consequat erat volutpat. Mauris gravida nisl ac ipsum 
+                       pharetra, sed placerat ipsum vehicula. Proin lobortis lectus id dui ornare, at lobortis augue ornare. 
+                       Etiam diam urna, placerat eu pellentesque tristique, ullamcorper eget nisi. Nunc scelerisque leo non 
+                       sagittis finibus. Ut ac rhoncus leo, sit amet iaculis metus. Mauris tempor felis nec mi scelerisque 
+                       fringilla.</p>
+                    <p>Morbi vitae aliquet erat. Vivamus scelerisque consequat est euismod convallis. Vestibulum congue luctus 
+                       mi nec ullamcorper. Aliquam rutrum laoreet dui vel pellentesque. Donec at sem non magna pharetra volutpat 
+                       ac vel urna. Sed gravida venenatis felis vel lacinia. Cras volutpat, magna vitae maximus convallis, metus 
+                       velit ullamcorper urna, in consequat eros felis eget est. Donec ullamcorper metus quis sagittis molestie. 
+                       Aliquam fringilla nibh ipsum, non tristique nisl pharetra placerat. Nullam dui lacus, auctor congue 
+                       sagittis vitae, dictum ut quam. Nulla aliquet tellus at cursus maximus.</p>
+                    <p>Sed sed congue mauris. Quisque mi erat, hendrerit ac leo ut, convallis dignissim nunc. In ultrices 
+                       gravida condimentum. Donec leo arcu, aliquet quis turpis non, maximus porta sem. Nulla facilisi. Donec 
+                       ac augue ac nisi ornare pretium vel ut dui. Integer varius nisi aliquam nulla fringilla venenatis. Donec 
+                       mollis interdum enim nec tincidunt. In hac habitasse platea dictumst. Nunc vehicula, augue et iaculis 
+                       consequat, ipsum eros efficitur diam, in mattis purus neque sit amet odio. Curabitur fermentum mi sem, 
+                       ut fringilla lorem hendrerit ac. Aliquam sem elit, varius nec leo molestie, pulvinar congue diam. 
+                       Vestibulum aliquet lectus lacus. Pellentesque suscipit, enim sit amet accumsan aliquam, ipsum dolor 
+                       vulputate massa, at convallis urna ante a arcu. Aenean pharetra, mauris sit amet rutrum pharetra, quam 
+                       justo feugiat turpis, quis pellentesque risus ante sed risus. Donec mauris nibh, volutpat eget risus a, 
+                       iaculis efficitur leo.</p>
+                    <p>Fusce suscipit semper sem ut vulputate. In et est at dui vehicula pharetra. Aenean non mi a felis dapibus 
+                       fermentum id at orci. Cras sollicitudin diam nibh, eu congue nisl pulvinar quis. Aenean imperdiet tortor 
+                       quis nulla elementum dapibus. Sed ac nisi facilisis, scelerisque nisl sit amet, efficitur erat. Quisque 
+                       tincidunt facilisis nunc, eu dictum sapien sagittis sed. Cras leo felis, bibendum ac tempus ut, accumsan 
+                       quis purus. Integer eleifend commodo metus. Pellentesque habitant morbi tristique senectus et netus et 
+                       malesuada fames ac turpis egestas. Sed ultricies porttitor justo nec congue. Aliquam at tincidunt purus. 
+                       Pellentesque tincidunt finibus consequat. Vivamus enim ante, sagittis in consectetur ac, pellentesque 
+                       eget nisi.</p>
                 </div>
             </div>
         </div>
@@ -136,7 +170,6 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Song Suggestions</h2>
                     <p>Suggest songs for us to play at our reception so you can bust a move (and not a hip).</p>
-                    <span id="songResult"></span><br>
                     <form class="form-inline" action="https://script.google.com/macros/s/AKfycbxwO3b91SJS1n4q_vlUP1GjrxgmXyUD4acLFzZCN6iwupl1OxKh/exec" method="post" target="_blank" id="songForm">
                         <div class="form-group">
                             <label class="sr-only" for="songName">Your Name</label>
@@ -148,6 +181,27 @@
                         </div>
                         <button type="submit" id="songSubmit" class="btn btn-default" disabled>Submit</button>
                     </form>
+                    <p class="" id="songResult"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RSVP Section -->
+    <section id="rsvp" class="content-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>RSVP</h2>
+                    <p>Once we have sent out invitations you'll be able to search for your name then let us know if you can make it.  If you have problems feel free to <a href="mailto://wedding@zachandlynde.com?subject=RSVP">contact us</a>!</p>
+                    <form class="form-inline" action="https://script.google.com/macros/s/AKfycbzRIScqpC8zggZwXKcmttl8dHUIzHgI6SS6t2gVsgyv_4oK110/exec" method="post" target="_blank" id="searchForm">
+                        <div class="form-group">
+                            <label class="sr-only" for="searchName">Your Name</label>
+                            <input class="form-control" id="searchName" type="text" name="search"  placeholder="Your Name" aria-label="Your Name" required />
+                        </div>
+                        <button type="submit" id="searchSubmit" class="btn btn-default" disabled>Search</button>
+                    </form>
+                    <p id="searchStatus"></p><br>
                 </div>
             </div>
         </div>
