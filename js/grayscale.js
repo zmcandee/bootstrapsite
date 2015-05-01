@@ -46,7 +46,7 @@ $("#songForm").submit(function(event){
                 $("#songResult").text("SUCCESS - Thanks for requesting the song: '"+res.row[2]+"'").addClass("text-success").removeClass("text-danger");
             else
                 $("#songResult").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
-        },'text').fail(function(){$("#songResult").text("Unable to process your request. Please try again later.");});
+        },'text').fail(function(){$("#songResult").text("Safari doesn't allow us to verify requests but hopefully we got it.").addClass("text-warning").removeClass("text-success");});
     $("#songSong").val('');
 });
 
@@ -56,14 +56,40 @@ $("#searchForm").submit(function(event){
     event.preventDefault();
     $("#searchSubmit").prop('disabled',true);
     $.post($(this).prop('action'),$(this).serialize(),function(data){
-            var res = $.parseJSON(data);
-            if(res.status=="SUCCESS") {
-                $("#searchStatus").text("SUCCESS - Found "+res.results.length+" matches").addClass("text-success").removeClass("text-danger");
-                console.log(res.results);
-            } else
-                $("#searchStatus").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
-        },'text').fail(function(){$("#searchStatus").text("Unable to process your request. Please try again later.");});
+			var res = $.parseJSON(data);
+			if(res.status=="SUCCESS") {
+				$("#searchStatus").text("SUCCESS - Found "+res.results.length+" matches").addClass("text-success").removeClass("text-danger");
+				console.log(res.results);
+				$("#rsvpName").empty();
+				for(x in res.results) {
+					$("#rsvpName").append($("<option>").text(res.results[x].name).val(res.results[x].name));
+				}
+				$("#rsvpForm").removeClass("hidden");
+			} else
+				$("#searchStatus").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
+		},'text').fail(function(){
+			$("#searchStatus").text("The RSVP feature isn't working right now, please call or email.").addClass("text-danger").removeClass("text-success");
+		});
 });
+
+$("#rsvpForm").submit(function(event){
+    event.preventDefault();
+    $("#rsvpSubmit").prop('disabled',true);
+	var formData = $(this).serialize();
+    $.post($(this).prop('action'),formData,function(data){
+			var res = $.parseJSON(data);
+			if(res.status=="SUCCESS") {
+				console.log(res.result);
+				$("#rsvpStatus").text("SUCCESS - Thanks for RSVP'ing").addClass("text-success").removeClass("text-danger");
+				
+			} else
+				$("#rsvpStatus").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
+		},'text').fail(function(){
+			$("#rsvpStatus").text("The RSVP feature isn't working right now, please call or email.").addClass("text-danger").removeClass("text-success");
+		});
+	$("#rsvpSubmit").prop('disabled',false);
+});
+
 
 /*
 // Google Maps Scripts
