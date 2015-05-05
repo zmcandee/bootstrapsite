@@ -239,8 +239,7 @@ header .intro-body .intro-text {
 }
 .content-section {
   padding: 100px 0;
-/*  width: 100%;
-  min-height: 75%; */
+/*  width: 100%; */
 }
 .content-section:nth-child(odd) {
   background: #d5d5d5;

@@ -71,7 +71,7 @@ $("#searchForm").submit(function(event){
 			$("#searchStatus").text("The RSVP feature isn't working right now, please call or email.").addClass("text-danger").removeClass("text-success");
 		});
 });
-
+$("#rsvpName").change(function(){$("#rsvpSubmit").prop('disabled',false);});
 $("#rsvpForm").submit(function(event){
     event.preventDefault();
     $("#rsvpSubmit").prop('disabled',true);
@@ -87,7 +87,6 @@ $("#rsvpForm").submit(function(event){
 		},'text').fail(function(){
 			$("#rsvpStatus").text("The RSVP feature isn't working right now, please call or email.").addClass("text-danger").removeClass("text-success");
 		});
-	$("#rsvpSubmit").prop('disabled',false);
 });
 
 
