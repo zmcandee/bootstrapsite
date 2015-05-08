@@ -309,7 +309,7 @@ ul.banner-social-buttons {
     margin-bottom: 0;
   }
 }
-footer {
+body > footer {
   padding: 50px 0;
 }
 footer p {
