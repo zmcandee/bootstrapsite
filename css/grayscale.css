@@ -237,6 +237,7 @@ header .intro-body .intro-text {
     transform: scale(1);
   }
 }
+#registry p,#story p { text-align: justify}
 .content-section {
   padding: 100px 0;
 /*  width: 100%; */
@@ -262,7 +263,7 @@ header .intro-body .intro-text {
 }
 @media (min-width: 767px) {
   .content-section {
-    padding: 250px 0;
+    padding: 100px 0;
   }
   #map {
     height: 400px;
