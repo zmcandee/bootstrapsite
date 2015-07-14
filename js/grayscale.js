@@ -55,19 +55,17 @@ $("#searchName").on('input propertychange',function(){$("#searchSubmit").prop("d
 $("#searchForm").submit(function(event){
     event.preventDefault();
     $("#searchSubmit").prop('disabled',true);
-    $.post($(this).prop('action'),$(this).serialize(),function(data){
-		  console.log("url: " + $(this).prop('action') + "&callback=?");
-			var res = $.parseJSON(data);
-			if(res.status=="SUCCESS") {
-				$("#searchStatus").text("SUCCESS - Found "+res.results.length+" matches").addClass("text-success").removeClass("text-danger");
-				console.log(res.results);
+	  $.getJSON($(this).prop('action') + "?callback=?", $(this).serialize(), function(data){
+			if(data.status=="SUCCESS") {
+				$("#searchStatus").text("SUCCESS - Found "+data.results.length+" matches").addClass("text-success").removeClass("text-danger");
+				console.log(data.results);
 				$("#rsvpName").empty();
-				for(x in res.results) {
-					$("#rsvpName").append($("<option>").text(res.results[x].name).val(res.results[x].name));
+				for(x in data.results) {
+					$("#rsvpName").append($("<option>").text(data.results[x].name).val(data.results[x].name));
 				}
 				$("#rsvpForm").removeClass("hidden");
 			} else
-				$("#searchStatus").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
+				$("#searchStatus").text(data.status+" - "+data.message).addClass("text-danger").removeClass("text-success");
 		},'text').fail(function(){
 			$("#searchStatus").text("The RSVP feature isn't working right now, please call or email.").addClass("text-danger").removeClass("text-success");
 		});
@@ -77,14 +75,13 @@ $("#rsvpForm").submit(function(event){
     event.preventDefault();
     $("#rsvpSubmit").prop('disabled',true);
 	var formData = $(this).serialize();
-    $.post($(this).prop('action'),formData,function(data){
-			var res = $.parseJSON(data);
-			if(res.status=="SUCCESS") {
-				console.log(res.result);
+	  $.getJSON($(this).prop('action') + "?callback=?", $(this).serialize(), function(data){
+			if(data.status=="SUCCESS") {
+				console.log(data.result);
 				$("#rsvpStatus").text("SUCCESS - Thanks for RSVP'ing").addClass("text-success").removeClass("text-danger");
 				
 			} else
-				$("#rsvpStatus").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
+				$("#rsvpStatus").text(data.status+" - "+data.message).addClass("text-danger").removeClass("text-success");
 		},'text').fail(function(){
 			$("#rsvpStatus").text("The RSVP feature isn't working right now, please call or email.").addClass("text-danger").removeClass("text-success");
 		});
