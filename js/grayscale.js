@@ -40,12 +40,12 @@ $("#songName,#songSong").on('input propertychange',function(){$("#songSubmit").p
 $("#songForm").submit(function(event){
     event.preventDefault();
     $("#songSubmit").prop('disabled',true);
-    $.post($(this).prop('action'),$(this).serialize(),function(data){
-            var res = $.parseJSON(data);
-            if(res.status=="SUCCESS")
-                $("#songResult").text("SUCCESS - Thanks for requesting the song: '"+res.row[2]+"'").addClass("text-success").removeClass("text-danger");
+//    $.post($(this).prop('action'),$(this).serialize(),function(data){
+	  $.getJSON($(this).prop('action') + "?callback=?", $(this).serialize(), function(data){
+            if(data.status=="SUCCESS")
+                $("#songResult").text("SUCCESS - Thanks for requesting the song: '"+data.row[2]+"'").addClass("text-success").removeClass("text-danger");
             else
-                $("#songResult").text(res.status+" - "+res.message).addClass("text-danger").removeClass("text-success");
+                $("#songResult").text(data.status+" - "+data.message).addClass("text-danger").removeClass("text-success");
         },'text').fail(function(){$("#songResult").text("Safari doesn't allow us to verify requests but hopefully we got it.").addClass("text-warning").removeClass("text-success");});
     $("#songSong").val('');
 });
@@ -56,6 +56,7 @@ $("#searchForm").submit(function(event){
     event.preventDefault();
     $("#searchSubmit").prop('disabled',true);
     $.post($(this).prop('action'),$(this).serialize(),function(data){
+		  console.log("url: " + $(this).prop('action') + "&callback=?");
 			var res = $.parseJSON(data);
 			if(res.status=="SUCCESS") {
 				$("#searchStatus").text("SUCCESS - Found "+res.results.length+" matches").addClass("text-success").removeClass("text-danger");
