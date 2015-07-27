@@ -51,6 +51,7 @@ $("#songForm").submit(function(event){
 });
 
 // RSVP request form handlers 
+var guests=[];
 $("#searchName").on('input propertychange',function(){$("#searchSubmit").prop("disabled",($('#searchName').val()=='')?true:false);});
 $("#searchForm").submit(function(event){
     event.preventDefault();
@@ -58,10 +59,13 @@ $("#searchForm").submit(function(event){
 	  $.getJSON($(this).prop('action') + "?callback=?", $(this).serialize(), function(data){
 			if(data.status=="SUCCESS") {
 				$("#searchStatus").text("SUCCESS - Found "+data.results.length+" matches").addClass("text-success").removeClass("text-danger");
-				console.log(data.results);
+				console.log("Old Guests: "+guests.length);
+				guests=data.results;
+				console.log("New Guests: "+guests.length);
 				$("#rsvpName").empty();
+				$("#rsvpName").append($("<option>").text('').val(''));
 				for(x in data.results) {
-					$("#rsvpName").append($("<option>").text(data.results[x].name).val(data.results[x].name));
+					$("#rsvpName").append($("<option>").text(guests[x].name).val(x));
 				}
 				$("#rsvpForm").removeClass("hidden");
 			} else
@@ -70,12 +74,25 @@ $("#searchForm").submit(function(event){
 			$("#searchStatus").text("The RSVP feature isn't working right now, please call or email.").addClass("text-danger").removeClass("text-success");
 		});
 });
-$("#rsvpName").change(function(){$("#rsvpSubmit").prop('disabled',false);});
+$("#rsvpName").change(function(){
+	console.log("Name change.");
+	$("#rsvpAdults").empty();
+	if($("#rsvpName").val() != '') {		
+		console.log($("#rsvpName").val()+" : "+guests[$("#rsvpName").val()].adults);
+		for (i=0; i<= guests[$("#rsvpName").val()].adults; i++)
+			$("#rsvpAdults").append($("<option>").text(i).val(i));
+		$("#rsvpSubmit").prop('disabled',false);
+	}
+	else
+		$("#rsvpAdults").append($("<option>").text('').val(''));
+});
 $("#rsvpForm").submit(function(event){
     event.preventDefault();
     $("#rsvpSubmit").prop('disabled',true);
-	var formData = $(this).serialize();
-	  $.getJSON($(this).prop('action') + "?callback=?", $(this).serialize(), function(data){
+	var formData = "rsvp="+guests[$("#rsvpName").val()].name.replace(/[\s&]+/g,"+");
+	formData += "&"+$("#rsvpEmail, #rsvpAdults").serialize();
+	console.log(formData);
+	$.getJSON($(this).prop('action') + "?callback=?", formData, function(data){
 			if(data.status=="SUCCESS") {
 				console.log(data.result);
 				$("#rsvpStatus").text("SUCCESS - Thanks for RSVP'ing").addClass("text-success").removeClass("text-danger");
