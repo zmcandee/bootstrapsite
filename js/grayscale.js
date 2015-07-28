@@ -20,6 +20,8 @@ $(function() {
         $('html, body').stop().animate({
             scrollTop: $($anchor.attr('href')).offset().top
         }, 1500, 'easeInOutExpo');
+		console.log($anchor.attr('href'));
+		ga('send','event','click','nav buttons',$anchor.attr('href'));
         event.preventDefault();
     });
 });
