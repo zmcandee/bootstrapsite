@@ -40,10 +40,14 @@
 		<div id="attending">
 			<div class="row"><span id="yes">999</span> / <span id="pending">999</span> / <span id="no">999</span></div>
 		</div>
+		<div id="spotify">
+			<div class="row"><span id="tracks">47</span> / <span id="thours">2</span> : <span id="tmins">55</span></div>
+		</div>
 	</div>
 	<script type="text/javascript">
 	  $('#countdown').fitText(0.6);
 	  $('#attending').fitText(1.2);
+	  $('#spotify').fitText(1.);
 	  
 	  function setAttendance (e) {
 		$('#yes').html(e.result.yes).css('color','#484');
@@ -67,6 +71,60 @@
 		setCountDown;
       $('#days').html(Math.floor((new Date(2015,9,17,16,30) - new Date())/86400000));
     </script>
+	<script>
+	// Spotify playlist script
+	// Portions from: https://github.com/plamere/MySavedTracks/
+	
+	var accessToken = null;
+	
+	function authorizeUser() {
+		var client_id = 'd528abf8b64c427a988ceb4dbb8115bc';
+		var redirect_uri = 'http://zachandlynde.com/stats';
+		var url = 'https://accounts.spotify.com/authorize?client_id=' + client_id +
+			'&response_type=token' +
+			'&scope=user-library-read' +
+			'&redirect_uri=' + encodeURIComponent(redirect_uri);
+		document.location = url;
+	}
+	
+	function parseArgs() {
+		var query = location.hash.split("#")[1];
+		var result = {};
+		query.split("&").forEach(function(part) {
+			var item = part.split("=");
+			result[item[0]] = decodeURIComponent(item[1]);
+		});
+		return result;
+	}
+
+	function getPlaylist() {
+		var url="https://api.spotify.com/v1/user/zmcandee/playlist/4SBF9H5Upp2mS7pm5cKaB3/tracks";
+		$.ajax(url, {
+			dataType: 'json',
+			data: null,
+			headers: {
+				'Authorization': 'Bearer ' + accessToken
+			},
+			success: function(r) {
+				alert(r);
+			},
+			error: function(r) {
+				alert("fail: "+r);
+			}
+		});
+	}
+	$(document).ready(
+		function() {
+			var args = parseArgs();
+			if ('access_token' in args) {
+				accessToken = args['access_token'];
+				getPlaylist();
+			}
+			$("#spotify").on('click',function(){authorizeUser()});
+		}
+	);
+	
+	</script>
 	<script type="text/javascript" src="https://script.google.com/macros/s/AKfycbwc8atuwrFgT0oIcTi6Hgt9k6NmMdPIKJh4cgWAJQg/dev?status&callback=setAttendance"></script>
 	
 </body>
