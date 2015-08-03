@@ -88,17 +88,21 @@
 	}
 	
 	function parseArgs() {
-		var query = location.hash.split("#")[1];
-		var result = {};
-		query.split("&").forEach(function(part) {
-			var item = part.split("=");
-			result[item[0]] = decodeURIComponent(item[1]);
+		var hash = location.hash.replace(/#/g, '');
+		var all = hash.split('&');
+		var args = {};
+		all.forEach(function(keyvalue) {
+			var kv = keyvalue.split('=');
+			var key = kv[0];
+			var val = kv[1];
+			args[key] = val;
 		});
-		return result;
+		return args;
 	}
 
 	function getPlaylist() {
-		var url="https://api.spotify.com/v1/user/zmcandee/playlist/4SBF9H5Upp2mS7pm5cKaB3/tracks";
+		var url="https://api.spotify.com/v1/users/zmcandee/playlists/4SBF9H5Upp2mS7pm5cKaB3/tracks?fields=total,items(track(name,artists(name),duration_ms))";
+		//var url="https://api.spotify.com/v1/me/tracks";
 		$.ajax(url, {
 			dataType: 'json',
 			data: null,
@@ -106,7 +110,14 @@
 				'Authorization': 'Bearer ' + accessToken
 			},
 			success: function(r) {
-				alert(r);
+				$("#tracks").text(r.total);
+				var ttime=0;
+				r.items.forEach(function(track){
+					ttime+=track.track.duration_ms;
+				});
+				console.log("Total ms: "+ttime);
+				$("#thours").text(Math.floor(ttime/3600000));
+				$("#tmins").text(Math.floor(ttime%3600000/60000));
 			},
 			error: function(r) {
 				alert("fail: "+r);
