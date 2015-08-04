@@ -130,8 +130,11 @@
 			if ('access_token' in args) {
 				accessToken = args['access_token'];
 				getPlaylist();
+			} else {
+				authorizeUser();
 			}
-			$("#spotify").on('click',function(){authorizeUser()});
+			var url = "https://open.spotify.com/user/zmcandee/playlist/4SBF9H5Upp2mS7pm5cKaB3";
+			$("#spotify").on("click",function(){window.open(url)});
 		}
 	);
 	
