@@ -40,14 +40,13 @@
 		<div id="attending">
 			<div class="row"><span id="yes">999</span> / <span id="pending">999</span> / <span id="no">999</span></div>
 		</div>
-		<div id="spotify">
+		<div id="spotify" style="display:none">
 			<div class="row"><span id="tracks">47</span> / <span id="thours">2</span> : <span id="tmins">55</span></div>
 		</div>
 	</div>
 	<script type="text/javascript">
 	  $('#countdown').fitText(0.6);
 	  $('#attending').fitText(1.2);
-	  $('#spotify').fitText(1.);
 	  
 	  function setAttendance (e) {
 		$('#yes').html(e.result.yes).css('color','#484');
@@ -130,7 +129,8 @@
 			if ('access_token' in args) {
 				accessToken = args['access_token'];
 				getPlaylist();
-			} else {
+				$('#spotify').show().fittext();
+			} else if ('spotify' in args) {
 				authorizeUser();
 			}
 			var url = "https://open.spotify.com/user/zmcandee/playlist/4SBF9H5Upp2mS7pm5cKaB3";
