@@ -32,9 +32,10 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 Number.prototype.toWords = function() {
-    function tw(s,n){var ns=s.slice(0,3),nw=[["","one","two","three","four","five","six","seven","eight","nine"],["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"],["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"],["","thousand","million","billion","trillion"]];
-        return (ns.length<1)?"":tw(s.slice(3),n+1)+((ns.length>1)?(((ns.length==3&&ns[2]!="0")?nw[0][ns[2]]+" hundred ":"")+((ns[1]=="1")?nw[1][ns[0]]+" ":((ns[1]!="0")?nw[2][ns[1]]+" ":"")+(ns[0]!="0"?nw[0][ns[0]]+" ":""))):(ns[0]!="0"?nw[0][ns[0]]+" ":""))+(parseInt(ns,10)!=0?nw[3][n]+(n>0?" ":""):"");}
-    return tw(this.toString().split("").reverse().join(""),0);
+    function tw(s,n){
+		var ns=s.slice(0,3),nw=[["","one","two","three","four","five","six","seven","eight","nine"],["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"],["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"],["","thousand","million","billion","trillion"]];
+		return (ns.length<1)?"":tw(s.slice(3),n+1)+((ns.length>1)?(((ns.length==3&&ns[2]!="0")?(ns[2]=="-"?"negative ":nw[0][ns[2]]+" hundred "):"")+((ns[1]=="1")?nw[1][ns[0]]+" ":((ns[1]!="0")?(ns[1]=="-"?"negative ":nw[2][ns[1]]+" "):"")+(ns[0]!="0"?(ns[0]=="-"?"negative ":nw[0][ns[0]]+" "):""))):(ns[0]!="0"?(ns[0]=="-"?"negative ":nw[0][ns[0]]+" "):""))+(parseInt(ns,10)!=0&&ns!="-"?nw[3][n]+(n>0?" ":""):"");;}
+    return parseInt(this)==0?"zero ":tw(this.toString().split("").reverse().join(""),0);
 }
 
 // Song request form handlers 
